@@ -4,15 +4,21 @@ from linebot import (
     LineBotApi, WebhookHandler
 )
 from linebot.exceptions import (
-    InvalidSignatureError,
+    InvalidSignatureError
 )
 from linebot.models import (
-    FollowEvent, MessageEvent, TextMessage, TextSendMessage, ImageMessage, ImageSendMessage, TemplateSendMessage, ButtonsTemplate, PostbackTemplateAction, MessageTemplateAction, URITemplateAction
+     MessageEvent, TextMessage, TextSendMessage 
 )
-
+import logging
 import os
+import sys
 
 app = Flask(__name__)
+
+# ログを標準出力に出力する
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+# （レベル設定は適宜行ってください）
+app.logger.setLevel(logging.ERROR)
 
 #環境変数からLINE Access Tokenを設定
 LINE_CHANNEL_ACCESS_TOKEN = os.environ["LINE_CHANNEL_ACCESS_TOKEN"]
@@ -23,6 +29,11 @@ line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(LINE_CHANNEL_SECRET)
 
 
+
+@app.route("/")
+def hello_world():
+    return "hello world!"
+    
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
@@ -49,5 +60,5 @@ def handle_message(event):
      )
 
 if __name__ == "__main__":
-    port = int(os.getenv("PORT"))
+    port = int(os.getenv("PORT",5000))
     app.run(host="0.0.0.0", port=port)
