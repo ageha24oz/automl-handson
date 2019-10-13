@@ -17,9 +17,9 @@ app = Flask(__name__)
 
 
 #環境変数からLINE Access Tokenを設定
-LINE_CHANNEL_ACCESS_TOKEN = os.environ['z4CdGyH921J8TOnPe1Z+FFtVCQ+ZNtOIvfJmimhD+Kcc0e+IrEIxJCgwoVMR7AI7mnJ9uQrzE2QdRTHV927nMapipSelbSDKfE672LBvhvqDFzVf8G3xSwuzR696nMi3PvhYPjTwnC7eHEbKFc10rAdB04t89/1O/w1cDnyilFU=']
+LINE_CHANNEL_ACCESS_TOKEN = os.environ["LINE_CHANNEL_ACCESS_TOKEN"]
 #環境変数からLINE Channel Secretを設定
-LINE_CHANNEL_SECRET = os.environ['7e1a4872c937789c5a8003c2d51d5add']
+LINE_CHANNEL_SECRET = os.environ["LINE_CHANNEL_SECRET"]
 
 line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(LINE_CHANNEL_SECRET)
