@@ -10,19 +10,19 @@ from linebot.exceptions import (
 from linebot.models import (
     FollowEvent, MessageEvent, TextMessage, TextSendMessage, ImageMessage, ImageSendMessage, TemplateSendMessage, ButtonsTemplate, PostbackTemplateAction, MessageTemplateAction, URITemplateAction
 )
-import os
+# import os
 
 # 軽量なウェブアプリケーションフレームワーク:Flask
 app = Flask(__name__)
 
 
 #環境変数からLINE Access Tokenを設定
-LINE_CHANNEL_ACCESS_TOKEN = os.environ["LINE_CHANNEL_ACCESS_TOKEN"]
+#LINE_CHANNEL_ACCESS_TOKEN = os.environ["LINE_CHANNEL_ACCESS_TOKEN"]
 #環境変数からLINE Channel Secretを設定
-LINE_CHANNEL_SECRET = os.environ["LINE_CHANNEL_SECRET"]
+#LINE_CHANNEL_SECRET = os.environ["LINE_CHANNEL_SECRET"]
 
-line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
-handler = WebhookHandler(LINE_CHANNEL_SECRET)
+line_bot_api = LineBotApi('z4CdGyH921J8TOnPe1Z+FFtVCQ+ZNtOIvfJmimhD+Kcc0e+IrEIxJCgwoVMR7AI7mnJ9uQrzE2QdRTHV927nMapipSelbSDKfE672LBvhvqDFzVf8G3xSwuzR696nMi3PvhYPjTwnC7eHEbKFc10rAdB04t89/1O/w1cDnyilFU=')
+handler = WebhookHandler('7e1a4872c937789c5a8003c2d51d5add')
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -50,5 +50,6 @@ def handle_message(event):
      )
 
 if __name__ == "__main__":
-    port = int(os.getenv("PORT"))
-    app.run(host="0.0.0.0", port=port)
+    #port = int(os.getenv("PORT"))
+    #app.run(host="0.0.0.0", port=port)
+    app.run()
