@@ -13,6 +13,7 @@ from linebot.models import (
 import logging
 import os
 import sys
+import random
 
 app = Flask(__name__)
 
